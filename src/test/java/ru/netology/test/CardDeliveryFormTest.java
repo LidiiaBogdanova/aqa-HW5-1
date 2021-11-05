@@ -20,7 +20,7 @@ public class CardDeliveryFormTest {
     }
 
     @Test
-    void ShouldGenerateCity(){
+    void ShouldChangePlanMeeting(){
         $("[placeholder='Город']").setValue(DataGenerator.generateCity("ru"));
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[placeholder='Дата встречи']").setValue(DataGenerator.chooseFirstDate());
