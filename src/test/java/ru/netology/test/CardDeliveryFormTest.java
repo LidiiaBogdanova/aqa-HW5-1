@@ -23,20 +23,20 @@ public class CardDeliveryFormTest {
     void ShouldChangePlanMeeting(){
         $("[placeholder='Город']").setValue(DataGenerator.generateCity("ru"));
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
-        $("[placeholder='Дата встречи']").setValue(DataGenerator.chooseFirstDate());
+        $("[placeholder='Дата встречи']").setValue(DataGenerator.chooseDate(4));
         $("[name='name']").setValue(DataGenerator.generateName("ru"));
         $("[name='phone']").setValue(DataGenerator.generatePhone("ru"));
         $("[class='checkbox__box']").click();
         $(withText("Запланировать")).click();
         $(withText("Успешно")).shouldBe(Condition.visible, Duration.ofSeconds(15));
-        $("[class='notification__content']").shouldHave(Condition.text(DataGenerator.chooseFirstDate()));
+        $("[class='notification__content']").shouldHave(Condition.text(DataGenerator.chooseDate(4)));
         $("[placeholder='Дата встречи']").doubleClick().sendKeys(Keys.BACK_SPACE);
-        $("[placeholder='Дата встречи']").setValue(DataGenerator.chooseSecondDate());
+        $("[placeholder='Дата встречи']").setValue(DataGenerator.chooseDate(6));
         $(withText("Запланировать")).click();
         $(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(Condition.visible);
         $(withText("Перепланировать")).click();
         $(withText("Успешно")).shouldBe(Condition.visible, Duration.ofSeconds(15));
-        $("[class='notification__content']").shouldHave(Condition.text(DataGenerator.chooseSecondDate()));
+        $("[class='notification__content']").shouldHave(Condition.text(DataGenerator.chooseDate(6)));
 
 
 
